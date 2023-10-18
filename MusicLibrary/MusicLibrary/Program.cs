@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MusicLibrary.Data;
+using MusicLibrary.Extensions;
 using MusicLibrary.Models;
 using MusicLibrary.Repository;
 using MusicLibrary.Repository.IRepository;
@@ -12,6 +13,7 @@ internal class Program
 
         // Add services to the container.
 
+        builder.Services.ConfigureCors();
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -23,6 +25,8 @@ internal class Program
 
 
         var app = builder.Build();
+
+        app.UseCors("CorsPolicy");
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
