@@ -5,7 +5,7 @@ using MusicLibrary.Repository.IRepository;
 
 namespace MusicLibrary.Repository
 {
-    public class SongRepository : IRepository<Song>
+    public class SongRepository : ISongRepository<Song>
     {
         private readonly ApplicationDbContext _context;
 
@@ -37,21 +37,38 @@ namespace MusicLibrary.Repository
             return await _context.Songs.FirstOrDefaultAsync(song => song.Id == id);
         }
 
-        public async Task Update(int id, Song item)
+        public async Task<Song> LikeASong(int id)
         {
-            var existProduct = await _context.Songs.FirstOrDefaultAsync(song => song.Id == id);
+            var existSong = await _context.Songs.FirstOrDefaultAsync(song => song.Id == id);
 
-            if(existProduct != null)
+            if(existSong != null)
             {
-                existProduct.Title = item.Title;
-                existProduct.Artist = item.Artist;
-                existProduct.Album = item.Album;
-                existProduct.ReleaseDate = item.ReleaseDate;
-                existProduct.Genre = item.Genre;
+                existSong.Likes++;
+                await _context.SaveChangesAsync();
+            }
+
+            return await Task.FromResult(existSong);
+        }
+
+        public async Task<Song> Update(int id, Song item)
+        {
+            var existSong = await _context.Songs.FirstOrDefaultAsync(song => song.Id == id);
+
+            if(existSong != null)
+            {
+                existSong.Title = item.Title;
+                existSong.Artist = item.Artist;
+                existSong.Album = item.Album;
+                existSong.ReleaseDate = item.ReleaseDate;
+                existSong.Genre = item.Genre;
 
                 await _context.SaveChangesAsync();
             }
+
+            return await Task.FromResult(existSong);
         }
+
+        
 
         
     }

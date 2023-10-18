@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using MusicLibrary.Models;
 using MusicLibrary.Repository.IRepository;
+using System.Reflection.Metadata.Ecma335;
 
 namespace MusicLibrary.Controllers
 {
@@ -9,24 +11,23 @@ namespace MusicLibrary.Controllers
     [ApiController]
     public class SongController : ControllerBase
     {
-        private readonly IRepository<Song> _repository;
+        private readonly ISongRepository<Song> _repository;
 
-        public SongController(IRepository<Song> repository)
+        public SongController(ISongRepository<Song> repository)
         {
             _repository = repository;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var songs = _repository.GetAll();
-            return Ok(songs);
+            return Ok(await _repository.GetAll());
         }
 
         [HttpGet("id")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var song = _repository.GetById(id);
+            var song = await _repository.GetById(id);
 
             if (song is null)
                 return NotFound();
@@ -35,32 +36,50 @@ namespace MusicLibrary.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Song song)
+        public async Task<IActionResult> Create([FromBody] Song song)
         {
             if (song is null)
                 return NotFound();
 
-            _repository.Create(song);
+             await _repository.Create(song);
 
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Song song)
+        public async Task<IActionResult> Put(int id, [FromBody] Song song)
         {
             if (song is null)
                 return BadRequest();
+            
+            var updatedSong = await _repository.Update(id, song);
 
-            _repository.Update(id, song);
+            if (updatedSong is null)
+                return NotFound();
+
+            return Ok();
+        }
+
+        [HttpPut("/like/{id}")]
+        public async Task<IActionResult> LikeASong(int id)
+        {
+             var song = await _repository.LikeASong(id);
+
+             if(song is null)
+                return NotFound();
+
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _repository.Delete(id);
+            await _repository.Delete(id);
             return NoContent();
         }
+
+        
+
 
     }
 }

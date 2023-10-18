@@ -52,7 +52,7 @@ namespace MusicLibrary.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Song");
+                    b.ToTable("Songs");
 
                     b.HasData(
                         new
@@ -62,7 +62,7 @@ namespace MusicLibrary.Migrations
                             Artist = "Eminem",
                             Genre = "Rap",
                             Likes = 0,
-                            ReleaseDate = new DateTime(2023, 10, 12, 17, 56, 11, 744, DateTimeKind.Local).AddTicks(5864),
+                            ReleaseDate = new DateTime(2023, 10, 18, 16, 45, 33, 742, DateTimeKind.Local).AddTicks(8002),
                             Title = "I am back"
                         },
                         new
@@ -72,7 +72,7 @@ namespace MusicLibrary.Migrations
                             Artist = "Eminem",
                             Genre = "Rap",
                             Likes = 0,
-                            ReleaseDate = new DateTime(2023, 10, 12, 17, 56, 11, 744, DateTimeKind.Local).AddTicks(6001),
+                            ReleaseDate = new DateTime(2023, 10, 18, 16, 45, 33, 742, DateTimeKind.Local).AddTicks(8055),
                             Title = "Hello"
                         },
                         new
@@ -82,7 +82,7 @@ namespace MusicLibrary.Migrations
                             Artist = "Eminem",
                             Genre = "Rap",
                             Likes = 0,
-                            ReleaseDate = new DateTime(2023, 10, 12, 17, 56, 11, 744, DateTimeKind.Local).AddTicks(6005),
+                            ReleaseDate = new DateTime(2023, 10, 18, 16, 45, 33, 742, DateTimeKind.Local).AddTicks(8057),
                             Title = "Sacramento"
                         },
                         new
@@ -92,7 +92,7 @@ namespace MusicLibrary.Migrations
                             Artist = "Eminem",
                             Genre = "Rap",
                             Likes = 0,
-                            ReleaseDate = new DateTime(2023, 10, 12, 17, 56, 11, 744, DateTimeKind.Local).AddTicks(6008),
+                            ReleaseDate = new DateTime(2023, 10, 18, 16, 45, 33, 742, DateTimeKind.Local).AddTicks(8060),
                             Title = "Table on "
                         },
                         new
@@ -102,7 +102,7 @@ namespace MusicLibrary.Migrations
                             Artist = "Eminem",
                             Genre = "Rap",
                             Likes = 0,
-                            ReleaseDate = new DateTime(2023, 10, 12, 17, 56, 11, 744, DateTimeKind.Local).AddTicks(6010),
+                            ReleaseDate = new DateTime(2023, 10, 18, 16, 45, 33, 742, DateTimeKind.Local).AddTicks(8062),
                             Title = "No more killing"
                         });
                 });

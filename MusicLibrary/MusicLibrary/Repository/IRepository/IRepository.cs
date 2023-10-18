@@ -2,13 +2,14 @@
 
 namespace MusicLibrary.Repository.IRepository
 {
-    public interface IRepository<T>  where T: class
+    public interface ISongRepository<T>  where T: class
     {
         Task<IEnumerable<T>> GetAll();
         Task<T> GetById(int id);
         Task Create(T item);
-        Task Update(int id, T item);
+        Task<T> Update(int id, T item);
         Task Delete(int id);
+        Task<T> LikeASong(int id);
     }
 }
 

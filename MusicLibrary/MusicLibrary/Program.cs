@@ -21,7 +21,7 @@ internal class Program
 
         builder.Services.AddDbContext<ApplicationDbContext>(option =>
           option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-        builder.Services.AddTransient<IRepository<Song>, SongRepository>();
+        builder.Services.AddTransient<ISongRepository<Song>, SongRepository>();
 
 
         var app = builder.Build();
