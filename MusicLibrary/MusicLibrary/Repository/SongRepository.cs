@@ -14,37 +14,32 @@ namespace MusicLibrary.Repository
             _context = context;
         }
 
-        public void Create(Song item)
+        public async Task Create(Song item)
         {
-            _context.Songs.Add(item);
+            await _context.Songs.AddAsync(item);
+            await _context.SaveChangesAsync();
         }
-
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            var song = _context.Songs.FirstOrDefault(song => song.Id == id);
+            var song = await _context.Songs.FirstOrDefaultAsync(song => song.Id == id);
             if (song != null)
                 _context.Remove(song);
+                await _context.SaveChangesAsync();
         }
 
-
-        public IEnumerable<Song> GetAll()
+        public async Task<IEnumerable<Song>> GetAll()
         {
-            return _context.Songs.ToList();
+            return await _context.Songs.ToListAsync();
         }
 
-        public Song GetById(int id)
+        public async Task<Song> GetById(int id)
         {
-            return _context.Songs.FirstOrDefault(song => song.Id == id);
+            return await _context.Songs.FirstOrDefaultAsync(song => song.Id == id);
         }
 
-        public void Save()
+        public async Task Update(int id, Song item)
         {
-            _context.SaveChanges();
-        }
-
-        public void Update(int id, Song item)
-        {
-            var existProduct = _context.Songs.FirstOrDefault(song => song.Id == id);
+            var existProduct = await _context.Songs.FirstOrDefaultAsync(song => song.Id == id);
 
             if(existProduct != null)
             {
@@ -53,7 +48,11 @@ namespace MusicLibrary.Repository
                 existProduct.Album = item.Album;
                 existProduct.ReleaseDate = item.ReleaseDate;
                 existProduct.Genre = item.Genre;
+
+                await _context.SaveChangesAsync();
             }
         }
+
+        
     }
 }

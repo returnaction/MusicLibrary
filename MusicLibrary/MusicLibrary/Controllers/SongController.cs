@@ -41,7 +41,6 @@ namespace MusicLibrary.Controllers
                 return NotFound();
 
             _repository.Create(song);
-            _repository.Save();
 
             return Ok();
         }
@@ -53,7 +52,6 @@ namespace MusicLibrary.Controllers
                 return BadRequest();
 
             _repository.Update(id, song);
-            _repository.Save();
             return Ok();
         }
 
@@ -61,7 +59,6 @@ namespace MusicLibrary.Controllers
         public IActionResult Delete(int id)
         {
             _repository.Delete(id);
-            _repository.Save();
             return NoContent();
         }
 
