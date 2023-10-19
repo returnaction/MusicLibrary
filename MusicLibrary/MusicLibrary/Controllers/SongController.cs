@@ -24,7 +24,7 @@ namespace MusicLibrary.Controllers
             return Ok(await _repository.GetAll());
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var song = await _repository.GetById(id);
