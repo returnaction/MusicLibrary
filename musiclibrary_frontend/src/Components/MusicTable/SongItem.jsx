@@ -63,13 +63,15 @@ const SongItem = ({ song }) => {
   // like song button
   const handleSongLikeButton = async (e) => {
     try {
-      const response = await axios.put(``, {});
+      const response = await axios.put(
+        `https://localhost:7065/api/song/like/${song.id}`,
+        {}
+      );
     } catch (error) {
       console.warn("Error in handleSongLikeButton, SongItem ", error);
     }
   };
 
-  console.log(song);
   return !isEditing ? (
     <tr>
       <td>{song.id}</td>
