@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "efb18d26-035d-4677-be71-0b507281aaf0",
+		"name": "WebApI-MusicLibrary",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28100906"
+	},
+	"item": [
+		{
+			"name": "Get All Songs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7065/api/song",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7065",
+					"path": [
+						"api",
+						"song"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Song by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7065/api/song/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7065",
+					"path": [
+						"api",
+						"song",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete song",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7065/api/song/6",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7065",
+					"path": [
+						"api",
+						"song",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Song",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Sexy\",\r\n  \"artist\": \"Malagor\",\r\n  \"album\": \"Together\",\r\n  \"releaseDate\": \"2023-10-19\",\r\n  \"genre\": \"Pop\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7065/api/song/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7065",
+					"path": [
+						"api",
+						"song",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Song",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Sexy\",\r\n  \"artist\": \"Ricky Martin\",\r\n  \"album\": \"Together\",\r\n  \"releaseDate\": \"2023-10-19\",\r\n  \"genre\": \"Pop\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7065/api/song/7",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7065",
+					"path": [
+						"api",
+						"song",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
