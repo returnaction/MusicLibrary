@@ -127,6 +127,28 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Like a song",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7065/api/song/like/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7065",
+					"path": [
+						"api",
+						"song",
+						"like",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

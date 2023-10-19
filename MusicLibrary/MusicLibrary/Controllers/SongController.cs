@@ -60,7 +60,7 @@ namespace MusicLibrary.Controllers
             return Ok();
         }
 
-        [HttpPut("/like/{id}")]
+        [HttpPut("like/{id}")]
         public async Task<IActionResult> LikeASong(int id)
         {
              var song = await _repository.LikeASong(id);
