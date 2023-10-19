@@ -43,7 +43,7 @@ namespace MusicLibrary.Controllers
 
              await _repository.Create(song);
 
-            return Ok();
+            return StatusCode(201);
         }
 
         [HttpPut("{id}")]
