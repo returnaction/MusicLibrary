@@ -47,13 +47,21 @@ function App() {
     setSongs(filterSongs);
   };
 
+  const onSongLikeSuccess = (songId) => {
+    setSongs((prevSongs) =>
+      prevSongs.map((song) =>
+        song.id === songId ? { ...song, likes: song.likes + 1 } : song
+      )
+    );
+  };
+
   return (
     <div className="App">
       <Header />
       <div>
         <NewSongForm onNewSong={fetchSongs} />
         <SearchBar filterSongs={filterSongs} />
-        <MusicTable songs={songs} />
+        <MusicTable songs={songs} onSongLikeSuccess={onSongLikeSuccess} />
       </div>
       <Footer />
     </div>

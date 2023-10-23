@@ -1,7 +1,9 @@
 import SongItem from "./SongItem";
 
-const MusicTable = ({ songs }) => {
-  const songItem = songs.map((song) => <SongItem key={song.id} song={song} />);
+const MusicTable = ({ songs, onSongLikeSuccess }) => {
+  const songItem = songs.map((song) => (
+    <SongItem key={song.id} song={song} onSongLikeSuccess={onSongLikeSuccess} />
+  ));
   return (
     <table>
       <thead>

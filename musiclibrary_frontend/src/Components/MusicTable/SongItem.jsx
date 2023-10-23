@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 //css
 import "./SongItem.css";
 
-const SongItem = ({ song }) => {
+const SongItem = ({ song, onSongLikeSuccess }) => {
   const shortDateFormat = dayjs(song.releaseDate).format("YYYY/MM/DD");
 
   //delete song
@@ -63,10 +63,8 @@ const SongItem = ({ song }) => {
   // like song button
   const handleSongLikeButton = async (e) => {
     try {
-      const response = await axios.put(
-        `https://localhost:7065/api/song/like/${song.id}`,
-        {}
-      );
+      await axios.put(`https://localhost:7065/api/song/like/${song.id}`, {});
+      onSongLikeSuccess(song.id);
     } catch (error) {
       console.warn("Error in handleSongLikeButton, SongItem ", error);
     }
