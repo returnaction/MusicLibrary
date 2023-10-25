@@ -1,7 +1,7 @@
 # MusicLibrary
 
 backend
-Asp.net Core 7
+C# , Asp.net Core 7
 
 frontend
 react js
@@ -15,4 +15,4 @@ You can update an existing song.
 
 You can delete a song
 
-Aslo you have a search bar which will mathc with title, artist, album, year.
+Aslo you have a search bar which will match with title, artist, album, year.
