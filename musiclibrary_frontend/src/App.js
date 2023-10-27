@@ -5,6 +5,7 @@ import SearchBar from "./Components/SearchBar/SearchBar";
 import MusicTable from "./Components/MusicTable/MusicTable";
 
 // styles
+
 import "./App.css";
 
 //utils
